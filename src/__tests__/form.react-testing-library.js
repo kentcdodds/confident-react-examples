@@ -1,7 +1,8 @@
-import 'react-testing-library/cleanup-after-each'
 import React from 'react'
-import {render, fireEvent} from 'react-testing-library'
+import {render, fireEvent, cleanup} from 'react-testing-library'
 import {Login} from '../form'
+
+afterEach(cleanup)
 
 test('react-testing-library version', () => {
   const handleSubmit = jest.fn()
