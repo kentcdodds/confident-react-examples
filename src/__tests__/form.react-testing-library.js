@@ -1,18 +1,19 @@
 import React from 'react'
-import {render, fireEvent, cleanup} from 'react-testing-library'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import {Login} from '../form'
-
-afterEach(cleanup)
 
 test('react-testing-library version', () => {
   const handleSubmit = jest.fn()
 
-  const {getByLabelText, getByText} = render(<Login onSubmit={handleSubmit} />)
-  const usernameInput = getByLabelText(/username/i)
-  usernameInput.value = 'chucknorris'
-  const passwordInput = getByLabelText(/password/i)
-  passwordInput.value = 'I need no password'
-  fireEvent.click(getByText(/submit/i))
+  render(<Login onSubmit={handleSubmit} />)
+
+  const usernameInput = screen.getByRole('textbox', {name: /username/i})
+  userEvent.type(usernameInput, 'chucknorris')
+  const passwordInput = screen.getByLabelText(/password/i)
+  userEvent.type(passwordInput, 'I need no password')
+
+  userEvent.click(screen.getByText(/submit/i))
 
   expect(handleSubmit).toHaveBeenCalledTimes(1)
   expect(handleSubmit).toHaveBeenCalledWith(
