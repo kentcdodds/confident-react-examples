@@ -1,20 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Simulate} from 'react-dom/test-utils'
 import {Login} from '../form'
 
 test('raw ReactDOM version', () => {
-  const handleSubmit = jest.fn()
+  // setup
   const container = document.createElement('div')
+  document.body.append(container)
 
+  const handleSubmit = jest.fn()
   ReactDOM.render(<Login onSubmit={handleSubmit} />, container)
+
   const inputs = container.querySelectorAll('input')
   const usernameInput = inputs[0]
   usernameInput.value = 'chucknorris'
   const passwordInput = inputs[1]
   passwordInput.value = 'I need no password'
+
   const form = container.querySelector('form')
-  Simulate.submit(form)
+  const submitEvent = new Event('submit', {
+    bubbles: true,
+    cancelable: true,
+  })
+  form.dispatchEvent(submitEvent)
 
   expect(handleSubmit).toHaveBeenCalledTimes(1)
   expect(handleSubmit).toHaveBeenCalledWith(
@@ -23,4 +30,7 @@ test('raw ReactDOM version', () => {
       password: 'I need no password',
     }),
   )
+
+  // cleanup
+  container.remove()
 })
