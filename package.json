@@ -4,32 +4,28 @@
   "description": "This repo is some examples that I'm using for my talk \"Confident React\"",
   "main": "src/index.js",
   "dependencies": {
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/user-event": "^12.1.5",
-    "babel-core": "^6.26.3",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^13.0.7",
     "babel-preset-react-app": "^9.1.2",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.4",
-    "jest": "^26.4.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-testing-library": "^8.0.1"
+    "enzyme-adapter-react-16": "^1.15.6",
+    "jest": "^26.6.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "jest --watchAll"
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kentcdodds/confident-react-examples.git"
   },
   "keywords": [],
-  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kentcdodds/confident-react-examples/issues"

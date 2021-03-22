@@ -9,17 +9,9 @@ test('enzyme version', () => {
   const handleSubmit = jest.fn()
 
   const wrapper = mount(<Login onSubmit={handleSubmit} />)
-  const usernameInput = wrapper
-    .find('input')
-    .first()
-    .hostNodes()
-    .instance()
+  const usernameInput = wrapper.find('input').first().hostNodes().instance()
   usernameInput.value = 'chucknorris'
-  const passwordInput = wrapper
-    .find('input')
-    .at(1)
-    .hostNodes()
-    .instance()
+  const passwordInput = wrapper.find('input').at(1).hostNodes().instance()
   passwordInput.value = 'I need no password'
   const form = wrapper.find('Form').simulate('submit')
 
